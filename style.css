@@ -8,13 +8,14 @@
     font-size: 62.5%;
     --ff-primary: 'Poppins', sans-serif;
     --text-color: #E1E1E6;
-    --primary-color: #043444;
+    --primary-color: #092D38;
+    --input-color: #043444;
 }
 
 body {
     font-size: 1.6rem;
     color: var(--text-color);
-    background-color: #2F2F33;
+    background-color: #000;
 }
 
 body * {
@@ -54,6 +55,8 @@ header h1 {
 .search {
     display: flex;
     align-items: center;
+    gap: .8rem;
+    
 }
 
 .search input {
@@ -61,19 +64,22 @@ header h1 {
     border: 1px solid #ccc;
     border-radius: .4rem 0 0 .4rem;
     padding: 0 .8rem;
-    max-width: 500px;
-    min-width: 300px;
-}
+    
+    min-width: fit-content;
+    }
 
 
 .search button {
-    background-color: #065E7C;
+    background-color: var(--input-color);
     border-radius: 0 .4rem .4rem 0;
     height: 3.2rem;
     border: none;
     padding: 0 1rem;  
     cursor: pointer;
-    color: var(--text-color);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
 }
 
 .search button:hover {
@@ -108,11 +114,11 @@ table th:last-child {
 }
 
 table tr:nth-child(odd) {
-    background: #5d7d85;
+    background: #06181C;
 }
 
 table tr {
-    background: #2f3e42;
+    background: rgba(6, 22, 27, 0.50);
 }
 
 table td {
