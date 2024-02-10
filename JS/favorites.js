@@ -11,6 +11,8 @@ export class Favorites {
 
     load() {
         this.entries = JSON.parse(localStorage.getItem('@github-favorites:')) || []
+
+        
           
     }
 
@@ -38,6 +40,7 @@ export class Favorites {
 
             this.update()
             this.save()
+            this.noFavsYet()
 
         }catch(error){
             alert(error.message)
@@ -50,9 +53,26 @@ export class Favorites {
         const filteredEntries = this.entries.filter(entry => entry.login !== user.login)
 
         this.entries = filteredEntries
+        
         this.update()
         this.save()
+
     }
+
+    noFavsYet() {
+        const noFavsBox = document.querySelector('#NoFavsBox')
+      
+        noFavsBox.classList.add('gone')    
+   }
+
+   backToZero() {
+    const noFavsBox = document.querySelector('#NoFavsBox')
+      
+        noFavsBox.classList.remove('gone') 
+   }
+
+   
+    
 }
 
 
@@ -93,7 +113,10 @@ export class FavoritesView extends Favorites {
                 const isOk = confirm('Tem certeza que deseja deletar essa linha?')
                 if(isOk) {
                     this.delete(user)
+                
                 }
+                
+                
             }
 
             this.tbody.append(row)
@@ -104,6 +127,8 @@ export class FavoritesView extends Favorites {
         
         this.tbody.querySelectorAll('tr').forEach((tr) => {
             tr.remove()
+            
+            
         })
 
         
