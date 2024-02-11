@@ -68,9 +68,6 @@ export class Favorites {
         }
                   
    }
-
-
-
     
 }
 
@@ -92,15 +89,19 @@ export class FavoritesView extends Favorites {
             if(event.key === "Enter"){ 
               const { value } = this.root.querySelector('.search input')
               this.add(value)
+           
             }
         }
         
         addButton.onclick = () => {
             const { value } = this.root.querySelector('.search input')
             this.add(value)
+           
         }
        
     }
+
+
 
     update() {
         this.removeAllTr()
