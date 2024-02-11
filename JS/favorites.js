@@ -11,7 +11,7 @@ export class Favorites {
 
     load() {
         this.entries = JSON.parse(localStorage.getItem('@github-favorites:')) || []
-
+        
         
           
     }
@@ -40,7 +40,7 @@ export class Favorites {
 
             this.update()
             this.save()
-            this.noFavsYet()
+            
 
         }catch(error){
             alert(error.message)
@@ -56,18 +56,21 @@ export class Favorites {
         
         this.update()
         this.save()
-
+        
     }
 
-    noFavsYet() {
-        const noFavsBox = document.querySelector('#NoFavsBox')
-      
-        noFavsBox.classList.add('gone')    
+    ToogleNoFavsYet() {
+        const noFavsBox = this.root.querySelector('#NoFavsBox')
+        if(this.entries.length === 0) {
+            noFavsBox.classList.remove('gone') 
+        } else {
+            noFavsBox.classList.add('gone')  
+        }
+                  
    }
 
 
 
-   
     
 }
 
@@ -84,6 +87,14 @@ export class FavoritesView extends Favorites {
 
     onadd() {
         const addButton = this.root.querySelector('.search button')
+        
+        window.document.onkeyup = event => {
+            if(event.key === "Enter"){ 
+              const { value } = this.root.querySelector('.search input')
+              this.add(value)
+            }
+        }
+        
         addButton.onclick = () => {
             const { value } = this.root.querySelector('.search input')
             this.add(value)
@@ -93,7 +104,7 @@ export class FavoritesView extends Favorites {
 
     update() {
         this.removeAllTr()
-
+        this.ToogleNoFavsYet()
         
         this.entries.forEach( user => {
             const row = this.createRow()
@@ -117,6 +128,7 @@ export class FavoritesView extends Favorites {
             }
 
             this.tbody.append(row)
+
         })
     }
 
