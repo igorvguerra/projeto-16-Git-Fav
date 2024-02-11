@@ -65,11 +65,7 @@ export class Favorites {
         noFavsBox.classList.add('gone')    
    }
 
-   backToZero() {
-    const noFavsBox = document.querySelector('#NoFavsBox')
-      
-        noFavsBox.classList.remove('gone') 
-   }
+
 
    
     
@@ -92,6 +88,7 @@ export class FavoritesView extends Favorites {
             const { value } = this.root.querySelector('.search input')
             this.add(value)
         }
+       
     }
 
     update() {
@@ -113,8 +110,8 @@ export class FavoritesView extends Favorites {
                 const isOk = confirm('Tem certeza que deseja deletar essa linha?')
                 if(isOk) {
                     this.delete(user)
-                
                 }
+
                 
                 
             }
